@@ -4,8 +4,8 @@
 
 存放位置：`assets/rates/`
 命名规范：`{类型}_{供应商}_{生效年月}.json`
-- `3pl-handling_科奈思LA_202607.json`
-- `3pl-storage_ACRO多伦多_202607.json`
+- `3pl-handling_示例仓LA_202607.json`
+- `3pl-storage_示例仓多伦多_202607.json`
 - `carrier_FedEx_202601.json`
 - `fuel_FedEx_2026W40.json`
 
@@ -17,8 +17,8 @@
 
 ```json
 {
-  "vendor": "科奈思LA",
-  "warehouse_names": ["科奈思LA"],
+  "vendor": "示例仓LA",
+  "warehouse_names": ["示例仓LA"],
   "currency": "USD",
   "effective_from": "2026-07-01",
   "effective_to": "2026-12-31",
@@ -70,8 +70,8 @@
 
 ```json
 {
-  "vendor": "ACRO多伦多",
-  "warehouse_names": ["ACRO多伦多"],
+  "vendor": "示例仓多伦多",
+  "warehouse_names": ["示例仓多伦多"],
   "currency": "CAD",
   "effective_from": "2026-07-01",
   "effective_to": "2026-12-31",

@@ -1,7 +1,7 @@
 {
   "_comment": "模板：复制为 handling_{供应商}_{yyyymm}.json 后填入真实价格。数值全部为 0 表示未填。",
-  "vendor": "科奈思LA",
-  "warehouse_names": ["科奈思LA"],
+  "vendor": "示例仓LA",
+  "warehouse_names": ["示例仓LA"],
   "currency": "USD",
   "effective_from": "2026-07-01",
   "effective_to": "2026-12-31",

@@ -1,7 +1,7 @@
 {
   "_comment": "模板：复制为 storage_{供应商}_{yyyymm}.json。billing_unit 必须先确认（cbm/cft/piece/pallet），它决定整套算法量纲。",
-  "vendor": "ACRO多伦多",
-  "warehouse_names": ["ACRO多伦多"],
+  "vendor": "示例仓多伦多",
+  "warehouse_names": ["示例仓多伦多"],
   "currency": "CAD",
   "effective_from": "2026-07-01",
   "effective_to": "2026-12-31",
