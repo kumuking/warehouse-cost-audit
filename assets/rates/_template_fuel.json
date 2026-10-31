@@ -1,0 +1,13 @@
+{
+  "_comment": "模板：复制为 fuel_{承运商}_{期间}.json。燃油率按周更新，service_group 需与承运商结算口径一致（Ground / Home Delivery / Express 各自不同）。",
+  "carrier": "FedEx",
+  "service_group": "Ground",
+  "currency": "USD",
+  "basis": "ship_date",
+  "weekly": [
+    { "week_start": "2026-10-05", "pct": 0.0 },
+    { "week_start": "2026-10-12", "pct": 0.0 },
+    { "week_start": "2026-10-19", "pct": 0.0 },
+    { "week_start": "2026-10-26", "pct": 0.0 }
+  ]
+}

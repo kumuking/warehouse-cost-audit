@@ -1,0 +1,30 @@
+# 内部使用授权 / Internal Use License
+
+Copyright (c) 2026. All rights reserved.
+
+本仓库（含脚本、文档、费率卡模板）仅供授权公司的内部人员用于自有业务的仓配费用核算与对账，未经书面许可不得：
+
+1. 对外分发、公开传播或发布到任何公开渠道；
+2. 用于向第三方提供商业服务；
+3. 去除或修改本授权声明后再次分发。
+
+---
+
+This repository (scripts, documentation, and rate-card templates) is provided
+for internal use by authorized personnel of the licensee only, for the purpose
+of warehouse and freight cost auditing on their own business.
+
+Without prior written permission, you may not: (1) redistribute or publish this
+work publicly; (2) use it to provide commercial services to third parties;
+(3) redistribute it with this notice removed or modified.
+
+---
+
+## 免责声明 / Disclaimer
+
+本工具输出的金额为**基于所提供费率卡与系统数据重算的结果**，不构成供应商应付账款的法律依据。所有差异项在与供应商沟通前，应人工复核原始凭证。
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. Computed
+amounts are estimates derived from the supplied rate cards and system data and
+must be manually verified against source documents before being used in any
+commercial dispute or payment decision.

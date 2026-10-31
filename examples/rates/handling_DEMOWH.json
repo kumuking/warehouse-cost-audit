@@ -1,0 +1,47 @@
+{
+  "warehouse_names": [
+    "DEMO-WH-LA"
+  ],
+  "currency": "USD",
+  "effective_from": "2026-01-01",
+  "effective_to": "2026-12-31",
+  "outbound": {
+    "per_order": 0.35,
+    "per_piece_first": 0.8,
+    "per_piece_extra": 0.45,
+    "min_charge": 1.2,
+    "tiers": [
+      {
+        "max_kg": 5,
+        "per_kg": 0.1
+      },
+      {
+        "max_kg": 15,
+        "per_kg": 0.18
+      },
+      {
+        "max_kg": 30,
+        "per_kg": 0.25
+      },
+      {
+        "max_kg": 999,
+        "per_kg": 0.3
+      }
+    ],
+    "oversize": [
+      {
+        "max_long_cm": 120,
+        "surcharge": 0.0
+      },
+      {
+        "max_long_cm": 999,
+        "surcharge": 3.5
+      }
+    ]
+  },
+  "inbound": {
+    "per_order": 5.0,
+    "per_piece": 0.12,
+    "min_charge": 8.0
+  }
+}

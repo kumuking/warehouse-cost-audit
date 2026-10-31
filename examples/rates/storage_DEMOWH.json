@@ -1,0 +1,27 @@
+{
+  "warehouse_names": [
+    "DEMO-WH-LA"
+  ],
+  "currency": "USD",
+  "effective_from": "2026-01-01",
+  "effective_to": "2026-12-31",
+  "billing_unit": "cft",
+  "free_days": 7,
+  "age_tiers": [
+    {
+      "min_days": 0,
+      "max_days": 90,
+      "price_per_unit_month": 0.75
+    },
+    {
+      "min_days": 91,
+      "max_days": 180,
+      "price_per_unit_month": 1.1
+    },
+    {
+      "min_days": 181,
+      "max_days": null,
+      "price_per_unit_month": 1.6
+    }
+  ]
+}

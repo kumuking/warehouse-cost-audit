@@ -1,0 +1,44 @@
+{
+  "_comment": "模板：复制为 handling_{供应商}_{yyyymm}.json 后填入真实价格。数值全部为 0 表示未填。",
+  "vendor": "科奈思LA",
+  "warehouse_names": ["科奈思LA"],
+  "currency": "USD",
+  "effective_from": "2026-07-01",
+  "effective_to": "2026-12-31",
+  "inbound": {
+    "per_order": 0.0,
+    "per_piece": 0.0,
+    "per_carton": 0.0,
+    "per_kg": 0.0,
+    "per_cbm": 0.0,
+    "min_charge": 0.0,
+    "max_charge": null,
+    "tiers": [
+      { "max_kg": 5.0, "per_piece": 0.0 },
+      { "max_kg": 15.0, "per_piece": 0.0 },
+      { "max_kg": 30.0, "per_piece": 0.0 }
+    ],
+    "value_added": [
+      { "name": "贴标", "unit": "per_piece", "price": 0.0 },
+      { "name": "换箱", "unit": "per_carton", "price": 0.0 }
+    ]
+  },
+  "outbound": {
+    "per_order": 0.0,
+    "per_piece_first": 0.0,
+    "per_piece_extra": 0.0,
+    "per_kg": 0.0,
+    "min_charge": 0.0,
+    "max_charge": null,
+    "tiers": [
+      { "max_kg": 5.0, "per_order": 0.0, "per_piece_first": 0.0, "per_piece_extra": 0.0 },
+      { "max_kg": 15.0, "per_order": 0.0, "per_piece_first": 0.0, "per_piece_extra": 0.0 }
+    ],
+    "oversize": [
+      { "max_long_cm": 120.0, "surcharge": 0.0 },
+      { "max_long_cm": 175.0, "surcharge": 0.0 },
+      { "max_long_cm": 999.0, "surcharge": 0.0 }
+    ],
+    "value_added": []
+  }
+}

@@ -1,0 +1,35 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# ---- 系统杂物 ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ---- 跑数产出（不进仓库）----
+output/
+examples/output/
+examples/_*.csv
+
+# ---- 敏感数据：凭证、真实费率卡、账单、订单明细，一律不入库 ----
+*api*.txt
+领星*.txt
+credentials*
+*.xls
+*.xlsx
+*.pdf
+
+# 真实费率卡绝不提交；模板保留
+assets/rates/*.json
+!assets/rates/_template_*.json
+
+# 订单/账单原始数据
+*.csv
+!examples/*.csv
+*.jsonl
+!examples/*.jsonl

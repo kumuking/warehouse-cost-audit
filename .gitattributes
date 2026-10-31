@@ -1,0 +1,6 @@
+* text=auto
+
+# 脚本类保持各自行尾，避免 Linux/macOS 上 install.sh 跑不起来
+*.sh   text eol=lf
+*.ps1  text eol=crlf
+*.py   text eol=lf

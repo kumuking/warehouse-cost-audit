@@ -1,0 +1,16 @@
+{
+  "carrier": "UPS",
+  "currency": "USD",
+  "effective_from": "2026-01-01",
+  "effective_to": "2026-12-31",
+  "weekly": [
+    {
+      "week_start": "2026-09-28",
+      "pct": 0.175
+    },
+    {
+      "week_start": "2026-10-26",
+      "pct": 0.18
+    }
+  ]
+}

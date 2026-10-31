@@ -1,0 +1,24 @@
+{
+  "_comment": "模板：复制为 storage_{供应商}_{yyyymm}.json。billing_unit 必须先确认（cbm/cft/piece/pallet），它决定整套算法量纲。",
+  "vendor": "ACRO多伦多",
+  "warehouse_names": ["ACRO多伦多"],
+  "currency": "CAD",
+  "effective_from": "2026-07-01",
+  "effective_to": "2026-12-31",
+  "billing_unit": "cbm",
+  "volume_basis": "product",
+  "free_days": 0,
+  "min_charge_monthly": 0.0,
+  "min_billable_qty": 0,
+  "price_per_unit_month": 0.0,
+  "age_tiers": [
+    { "min_days": 0, "max_days": 30, "price_per_unit_month": 0.0 },
+    { "min_days": 31, "max_days": 90, "price_per_unit_month": 0.0 },
+    { "min_days": 91, "max_days": 180, "price_per_unit_month": 0.0 },
+    { "min_days": 181, "max_days": null, "price_per_unit_month": 0.0 }
+  ],
+  "peak_surcharge": {
+    "months": [11, 12],
+    "multiplier": 1.0
+  }
+}
