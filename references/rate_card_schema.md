@@ -165,3 +165,25 @@
 
 - 燃油按 **发货日** 落在哪一周取值（若账单按发票周期，则切到 `billing_cycle` 模式，见 `references/assumptions.md`）。
 - 不同 `service_group`（Ground / Express / Home Delivery）燃油率不同，必须分开取。
+
+---
+
+## 五、供应商价表 → 费率卡
+
+上面四张卡是**规范化后的结果**，不是供应商原始价表。原始价表格式与收费项名称各家不同，
+中间由 `assets/rates/mapping/mapping_<供应商>.json` 做一层翻译，全流程见
+`references/vendor_mapping_guide.md`。
+
+```bash
+python scripts/rate_import.py inspect 供应商报价.xlsx --out 指纹.md      # 1. 看结构
+python scripts/rate_import.py build   供应商报价.xlsx \
+    --mapping ../assets/rates/mapping/mapping_示例仓LA.json --out ../assets/rates   # 2. 抽价建卡
+```
+
+- 一张价表常同时含操作费与仓储费，`build` 按字段前缀自动拆成多张卡，文件名遵循本文件开头的命名规范。
+- **接不住的收费项不会静默丢弃**，全部进 `_import_<vendor>_unmapped.csv`；同一字段抽到多个值进 `_conflicts.csv`；
+  一个标签咬中多个字段进 `_ambiguous.csv`。三份都要人看完再核账。
+- 卡内 `_meta.needs_review` 非空表示存在竞争取值，**该卡不得直接用于对账**。
+- 二维表（分区费率、重量段、库龄阶梯）不自动推断行列，必须在 mapping 的 `matrix` 段显式声明区间——
+  自动猜行列一旦错位，价格会静默套错档，比报错难查得多。
+

@@ -28,9 +28,12 @@ def load_cards(kind: str, key_field: str, key_value: str, on_date: str) -> dict:
     """
     d = datetime.strptime(on_date, "%Y-%m-%d").date()
     hits = []
-    for p in sorted(RATES_DIR.glob(f"{kind}*.json")):
+    # 用 *{kind}* 匹配，兼容 3pl-handling_xxx.json / carrier_FedEx.json 两种命名
+    for p in sorted(RATES_DIR.glob(f"*{kind}*.json")):
         if p.name.startswith("_"):
             continue  # 跳过模板
+        if p.parent.name == "mapping":
+            continue  # 跳过映射表
         try:
             card = json.loads(p.read_text(encoding="utf-8"))
         except Exception as e:

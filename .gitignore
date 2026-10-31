@@ -28,6 +28,10 @@ credentials*
 assets/rates/*.json
 !assets/rates/_template_*.json
 
+# 供应商价表映射：仓库只留模板，各家真实映射各自本地保存（含真实仓名）
+assets/rates/mapping/*.json
+!assets/rates/mapping/_template_*.json
+
 # 订单/账单原始数据
 *.csv
 !examples/*.csv

@@ -32,6 +32,21 @@ python scripts/healthcheck.py --cred ~/领星api.txt --orders wms出库单.jsonl
 
 自检不过（API 不通、费率卡缺失）立即停止，不要带着缺口跑数。API 不通优先排查 IP 白名单。
 
+### 步骤 0.5：把供应商价表落成费率卡
+
+各家价表格式与收费项名称不同，**不要手工抄成 JSON**，走映射层：
+
+```bash
+python scripts/rate_import.py inspect 供应商报价.xlsx --out 指纹.md     # 先看结构，不抽价
+python scripts/rate_import.py build   供应商报价.xlsx \
+    --mapping ../assets/rates/mapping/mapping_示例仓LA.json --out ../assets/rates
+```
+
+- 统一名称字典与口径陷阱清单见 `references/vendor_mapping_guide.md`。
+- `build` 产出的 `_unmapped.csv` / `_conflicts.csv` / `_ambiguous.csv` **必须逐条处理**；
+  卡里 `_meta.needs_review` 非空的，不得直接用于对账。
+- 名称对不上脚本会报出来，你看得见；口径理解错会静默算错钱，所以口径必须人工确认一次并固化进卡。
+
 ### 步骤 1：取数
 
 ```bash
@@ -79,6 +94,9 @@ python scripts/reconcile.py --calc 运费核算.csv --bill bill.csv \
 
 - **不跨币种相加**。同一张表里 USD、CAD、GBP 必须分行或分列，汇总时按币种分列。
 - **费率卡命中必须唯一**。命中 0 张或多张即报错终止，绝不猜测用哪一版价格。
+- **价表翻译只走映射层，不靠模型读表记价**。`_unmapped` 里的项宁可留着不处理，也不许拍一个「看起来差不多」的价格填进卡。
+- **卡内 `_meta.needs_review` 非空即视为未定稿**，不得用于对账或对外出结论。
+- **量纲不同不得横向比价**。仓储费 cbm 与 cft、操作费 按件与按单、操作费 按 kg 与按 lb，先换算到同一量纲再比。
 - **`[待确认]` 口径不得静默取默认值**，必须在输出中带警告标记。
 - **`logistics_freight` 无值（约 15%）的订单**标为「无实收值」，不计入差异统计，单独列示。
 - **领星只有运费总额，没有基础/燃油/AHS 拆分**。要逐项核实必须有承运商账单；只有价表时只能核总额，必须在结论中明确说明这一限制。
@@ -94,6 +112,7 @@ python scripts/reconcile.py --calc 运费核算.csv --bill bill.csv \
 
 ## 参考文件
 
+- `references/vendor_mapping_guide.md` — 供应商价表映射：统一名称字典、口径陷阱清单、mapping 语法
 - `references/rate_card_schema.md` — 四类费率卡字段规范与匹配规则
 - `references/assumptions.md` — 全部口径约定、待确认项、每次跑数必查的完整性校验
 - `references/lingxing_api.md` — 领星接口清单、字段映射、已知坑

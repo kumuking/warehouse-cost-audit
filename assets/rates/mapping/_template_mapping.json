@@ -1,0 +1,129 @@
+{
+  "_readme": [
+    "这是供应商价表映射模板，复制一份改名 mapping_<供应商>.json 再填。",
+    "作用：把这家价表里的叫法，翻译成脚本唯一认的 canonical 名称（见 references/vendor_mapping_guide.md）。",
+    "rules 按关键词长度降序匹配，所以「出库操作费(最低收费)」会优先于「出库操作费」，不用刻意排序。",
+    "接不住的项不会静默丢弃，会进 _unmapped.csv 等你确认。"
+  ],
+  "vendor": "示例仓LA",
+  "kind": "handling",
+  "warehouse_names": ["示例仓LA"],
+  "currency": "USD",
+  "effective_from": "2026-11-01",
+  "effective_to": "2026-12-31",
+  "sheet": "报价明细",
+  "scale": 1,
+  "rules": [
+    {
+      "match": ["出库操作费（最低收费）", "出库最低收费", "Outbound Minimum"],
+      "field": "outbound.min_charge",
+      "value_from": "right",
+      "unit": "USD/单"
+    },
+    {
+      "match": ["出库操作费", "出库费", "Outbound Handling", "Fulfillment Fee", "Pick & Pack", "订单处理费"],
+      "field": "outbound.per_order",
+      "value_from": "right",
+      "unit": "USD/单"
+    },
+    {
+      "match": ["首件费", "First Item"],
+      "field": "outbound.per_piece_first",
+      "value_from": "right",
+      "unit": "USD/件"
+    },
+    {
+      "match": ["续件费", "Additional Item", "加件费"],
+      "field": "outbound.per_piece_extra",
+      "value_from": "right",
+      "unit": "USD/件"
+    },
+    {
+      "match": ["出库按件", "Per Piece Outbound"],
+      "field": "outbound.per_piece",
+      "value_from": "right",
+      "unit": "USD/件"
+    },
+    {
+      "match": ["最低收费", "Minimum Charge", "起步价"],
+      "field": "outbound.min_charge",
+      "value_from": "right",
+      "unit": "USD/单"
+    },
+    {
+      "match": ["超长附加", "Oversize", "超尺寸"],
+      "field": "outbound.oversize_surcharge",
+      "value_from": "right",
+      "unit": "USD/件"
+    },
+    {
+      "match": ["退件处理", "Return Handling", "退货处理费"],
+      "field": "outbound.return_fee",
+      "value_from": "right",
+      "unit": "USD/件"
+    },
+    {
+      "match": ["入库最低收费", "Inbound Minimum"],
+      "field": "inbound.min_charge",
+      "value_from": "right",
+      "unit": "USD/单"
+    },
+    {
+      "match": ["入库操作费", "Inbound Handling", "收货费"],
+      "field": "inbound.per_order",
+      "value_from": "right",
+      "unit": "USD/单"
+    },
+    {
+      "match": ["入库按件", "上架费", "Putaway"],
+      "field": "inbound.per_piece",
+      "value_from": "right",
+      "unit": "USD/件"
+    },
+    {
+      "match": ["卸货费", "Unloading"],
+      "field": "inbound.unload_fee",
+      "value_from": "right",
+      "unit": "USD/柜"
+    },
+    {
+      "match": ["仓储费", "仓租", "Storage Fee", "Warehousing"],
+      "field": "storage.price_per_unit_month",
+      "value_from": "right",
+      "unit": "USD/cbm/月"
+    },
+    {
+      "match": ["计费单位", "Billing Unit"],
+      "field": "storage.billing_unit",
+      "value_type": "text"
+    },
+    {
+      "match": ["免仓期", "Free Storage Days", "免租期"],
+      "field": "storage.free_days",
+      "value_from": "right",
+      "unit": "天"
+    },
+    {
+      "match": ["体积重", "Dim Divisor", "Dimensional Weight"],
+      "field": "carrier.dim_divisor",
+      "value_from": "right"
+    },
+    {
+      "match": ["燃油", "Fuel Surcharge"],
+      "field": "carrier.fuel_pct",
+      "value_from": "right"
+    }
+  ],
+  "matrix": [
+    {
+      "_note": "二维表（重量段×单价、分区×重量）必须显式声明行列，脚本不自动猜，避免错位取价。",
+      "field": "outbound.tiers",
+      "sheet": "报价明细",
+      "row_start": 20,
+      "row_end": 24,
+      "col_map": {"max_kg": "A", "per_order": "B", "per_piece_first": "C", "per_piece_extra": "D"},
+      "_disabled": true
+    }
+  ],
+  "ignore": ["备注", "说明", "Note", "生效日期", "付款方式"]
+}
